@@ -30,7 +30,7 @@ jobs:
           push: false
           tags: ${{ inputs.docker_image_name }}:latest
       - name: Perform Anchore analysis
-        uses: anchore/scan-action@v3.1.0
+        uses: anchore/scan-action@v3.2.0
         with:
           acs-report-enable: true
           fail-build: false
