@@ -45,7 +45,7 @@ jobs:
         id: get_release_version
         run: echo ::set-output name=tags::${GITHUB_REF#refs/*/v}
       - name: Build and Push the Docker image
-        uses: docker/build-push-action@v3.2.0
+        uses: docker/build-push-action@v3.3.0
         with:
           context: ${{ inputs.docker_build_context }}
           push: true
