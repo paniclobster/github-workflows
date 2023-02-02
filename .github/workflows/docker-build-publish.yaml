@@ -43,7 +43,7 @@ jobs:
           password: ${{ secrets.docker_hub_password }}
       - name: Get release version
         id: get_release_version
-        run: echo ::set-output name=tags::${GITHUB_REF#refs/*/v}
+        run: echo "tags=${GITHUB_REF#refs/*/v}" >> $GITHUB_OUTPUT
       - name: Build and Push the Docker image
         uses: docker/build-push-action@v3.3.0
         with:
