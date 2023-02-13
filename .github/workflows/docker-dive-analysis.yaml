@@ -38,6 +38,8 @@ jobs:
           load: true
           push: false
           tags: ${{ inputs.docker_image_name }}:${{ inputs.docker_image_tag_prefix }}latest${{ inputs.docker_image_tag_suffix }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Install dive
         run: |
           curl --silent https://api.github.com/repos/wagoodman/dive/releases | grep browser_download | grep linux | cut -d '"' -f 4 | grep -e /dive_.*\.deb | sort | tail -n 1 | xargs curl --location --output dive.deb --silent

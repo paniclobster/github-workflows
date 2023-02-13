@@ -48,5 +48,8 @@ jobs:
         uses: docker/build-push-action@v4.0.0
         with:
           context: ${{ inputs.docker_build_context }}
+          load: false
           push: true
           tags: ${{ inputs.docker_image_name }}:${{ inputs.docker_image_tag_prefix }}${{ steps.get_release_version.outputs.tags }}${{ inputs.docker_image_tag_suffix }},${{ inputs.docker_image_name }}:${{ inputs.docker_image_tag_prefix }}latest${{ inputs.docker_image_tag_suffix }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
